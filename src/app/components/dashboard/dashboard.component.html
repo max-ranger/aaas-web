@@ -1,0 +1,22 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav class="sidenav" mode="side" opened>
+    <mat-selection-list [multiple]="false">
+      <mat-list-option [routerLink]="'log-messages'">
+        Log Messages
+      </mat-list-option>
+      <mat-list-option [routerLink]="'counter-metrics'">
+        Counter Metrics
+      </mat-list-option>
+      <mat-list-option [routerLink]="'interval-metrics'">
+        Interval metrics
+      </mat-list-option>
+      <mat-list-option [routerLink]="'measure-metrics'">
+        Measure Metrics
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

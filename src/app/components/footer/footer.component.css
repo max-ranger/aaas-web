@@ -1,0 +1,12 @@
+.footer {
+  font-size: 15px;
+  color: #bebebe;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.spacer-middle {
+  flex: 0.05;
+}

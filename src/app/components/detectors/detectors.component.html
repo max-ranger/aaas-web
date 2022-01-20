@@ -1,0 +1,16 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav class="sidenav" mode="side" opened>
+    <mat-selection-list [multiple]="false">
+      <mat-list-option [routerLink]="'interval-detectors'">
+        Interval Detectors
+      </mat-list-option>
+      <mat-list-option [routerLink]="'min-max-detectors'">
+        MinMax Detectors
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
