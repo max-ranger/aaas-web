@@ -12,8 +12,13 @@ body {
 }
 
 .component-content {
-  margin-top: 50px;
-  margin-left: 50px;
+  margin: 50px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .sidenav-container {

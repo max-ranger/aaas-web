@@ -1,0 +1,53 @@
+.metric-cards-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px;
+  width: 100%;
+}
+
+.metric-chart-card {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  max-width: 1005px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.metric-table {
+  max-width: 100%;
+}
+
+table {
+  width: 100%;
+}
+/*
+td, th {
+  width: 20%;
+}
+*/
+
+.mat-column-name {
+  text-align: left;
+}
+
+.mat-column-clientId {
+  text-align: left;
+}
+
+.mat-column-timestamp {
+  text-align: left;
+}
+
+.mat-column-value {
+  text-align: left;
+}
+
+.mat-column-unit {
+  text-align: left;
+}
