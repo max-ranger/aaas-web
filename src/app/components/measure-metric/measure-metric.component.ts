@@ -1,5 +1,5 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -31,6 +31,7 @@ import {
 } from 'chart.js';
 import 'chartjs-adapter-moment';
 import * as moment from 'moment';
+import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
 import { MeasureMetric } from 'src/app/shared/models/measure-metric';
 import { MetricService } from 'src/app/shared/services/metric.service';
 
@@ -65,13 +66,17 @@ Chart.register(
   templateUrl: './measure-metric.component.html',
   styleUrls: ['./measure-metric.component.css']
 })
-export class MeasureMetricComponent implements OnInit {
+export class MeasureMetricComponent implements OnInit, OnDestroy {
+
+  timer: any;
+  metricChart: any;
+  detailMetricChart: any;
 
   metrics: MeasureMetric[] = [];
   timestamps: Date[] = [];
   values: number[] = [];
 
-  displayedColumns: string[] = ['name', 'clientId', 'timeStamp', 'value', 'unit'];
+  displayedColumns: string[] = ['timeStamp', 'name', 'clientId', 'value', 'unit'];
   dataSource: MatTableDataSource<MeasureMetric>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -81,6 +86,17 @@ export class MeasureMetricComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fetchData();
+    this.timer = setInterval(() => {
+      this.updateData();
+    }, 5000);
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.timer);
+  }
+
+  fetchData() {
     this.metricService.getAllMeasureMetrics().subscribe(res => {
       this.metrics = res;
       this.timestamps = res.map(val => moment(val.timeStamp).toDate());
@@ -91,6 +107,32 @@ export class MeasureMetricComponent implements OnInit {
 
       this.initMetricChart();
       this.initDetailMetricChart();
+    });
+  }
+
+  updateData() {
+    this.metricService.getAllMeasureMetrics().subscribe(res => {
+      this.metrics = res;
+      this.timestamps = res.map(val => moment(val.timeStamp).toDate());
+      this.values = res.map(val => val.value);
+      this.dataSource = new MatTableDataSource(res);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+
+      this.metricChart.data.labels = this.timestamps;
+      this.metricChart.data.datasets[0].data = this.values;
+      this.metricChart.options.scales.x.min = moment(moment().subtract(1, 'hours')).valueOf();
+      this.metricChart.options.scales.x.max = moment();
+
+      
+      this.detailMetricChart.options.scales.x.min = moment(moment().subtract(5, 'minutes')).valueOf();
+      this.detailMetricChart.options.scales.x.max = moment();
+
+      this.detailMetricChart.data.labels = this.timestamps;
+      this.detailMetricChart.data.datasets[0].data = this.values;
+
+      this.metricChart.update('resize');
+      this.detailMetricChart.update('resize');
     });
   }
 
@@ -113,7 +155,7 @@ export class MeasureMetricComponent implements OnInit {
 
   initMetricChart() {
     var ctx = <HTMLCanvasElement>document.getElementById('metric-chart');
-    var metricChart = new Chart(ctx, {
+    this.metricChart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: this.timestamps,
@@ -157,7 +199,7 @@ export class MeasureMetricComponent implements OnInit {
 
   initDetailMetricChart() {
     var ctx = <HTMLCanvasElement>document.getElementById('detail-metric-chart');
-    var detailMetricChart = new Chart(ctx, {
+    this.detailMetricChart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: this.timestamps,
