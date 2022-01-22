@@ -89,89 +89,8 @@ export class MeasureMetricComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
 
-      var ctx = <HTMLCanvasElement>document.getElementById('metric-chart');
-      var metricChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: this.timestamps,
-          datasets: [{
-            label: 'Measure Metrics',
-            data: this.values,
-            fill: true,
-            borderColor: '#1de9b6',
-            borderCapStyle: 'round',
-            borderWidth: 1,
-            tension: 0.1,
-            normalized: true,
-            spanGaps: true
-          }]
-        },
-        options: {
-          spanGaps: true,
-          scales: {
-            x: {
-              display: true,
-              type: 'time',
-              time: {
-                parser: 'DD.MM.YYYY HH:mm',
-                tooltipFormat: 'll HH:mm',
-                unit: 'minute',
-                stepSize: 1,
-                displayFormats: {
-                  'minute': 'DD.MM HH:mm'
-                }
-              },
-              min: moment(moment().subtract(1, 'hours')).valueOf(),
-              max: moment().valueOf()
-            },
-            y: {
-              beginAtZero: true
-            }
-          },
-        }
-      });
-
-      var ctx = <HTMLCanvasElement>document.getElementById('detail-metric-chart');
-      var detailMetricChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: this.timestamps,
-          datasets: [{
-            label: 'Detail Measure Metrics',
-            data: this.values,
-            fill: true,
-            borderColor: '#1de9b6',
-            borderCapStyle: 'round',
-            borderWidth: 1,
-            tension: 0.1,
-            normalized: true,
-            spanGaps: true
-          }]
-        },
-        options: {
-          spanGaps: true,
-          scales: {
-            x: {
-              display: true,
-              type: 'time',
-              time: {
-                parser: 'DD.MM.YYYY HH:mm',
-                tooltipFormat: 'll HH:mm',
-                unit: 'minute',
-                stepSize: 1,
-                displayFormats: {
-                  'minute': 'DD.MM HH:mm'
-                }
-              },
-              min: moment(moment().subtract(5, 'minutes')).valueOf(),
-              max: moment().valueOf()
-            },
-            y: {
-              beginAtZero: true
-            }
-          },
-        }
-      });
+      this.initMetricChart();
+      this.initDetailMetricChart();
     });
   }
 
@@ -190,5 +109,93 @@ export class MeasureMetricComponent implements OnInit {
     } else {
       this._liveAnnouncer.announce('sorting cleared');
     }
+  }
+
+  initMetricChart() {
+    var ctx = <HTMLCanvasElement>document.getElementById('metric-chart');
+    var metricChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: this.timestamps,
+        datasets: [{
+          label: 'Measure Metrics',
+          data: this.values,
+          fill: true,
+          borderColor: '#1de9b6',
+          borderCapStyle: 'round',
+          borderWidth: 1,
+          tension: 0.1,
+          normalized: true,
+          spanGaps: true
+        }]
+      },
+      options: {
+        spanGaps: true,
+        scales: {
+          x: {
+            display: true,
+            type: 'time',
+            time: {
+              parser: 'DD.MM.YYYY HH:mm',
+              tooltipFormat: 'll HH:mm',
+              unit: 'minute',
+              stepSize: 1,
+              displayFormats: {
+                'minute': 'DD.MM HH:mm'
+              }
+            },
+            min: moment(moment().subtract(1, 'hours')).valueOf(),
+            max: moment().valueOf()
+          },
+          y: {
+            beginAtZero: true
+          }
+        },
+      }
+    });
+  }
+
+  initDetailMetricChart() {
+    var ctx = <HTMLCanvasElement>document.getElementById('detail-metric-chart');
+    var detailMetricChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: this.timestamps,
+        datasets: [{
+          label: 'Detail Measure Metrics',
+          data: this.values,
+          fill: true,
+          borderColor: '#1de9b6',
+          borderCapStyle: 'round',
+          borderWidth: 1,
+          tension: 0.1,
+          normalized: true,
+          spanGaps: true
+        }]
+      },
+      options: {
+        spanGaps: true,
+        scales: {
+          x: {
+            display: true,
+            type: 'time',
+            time: {
+              parser: 'DD.MM.YYYY HH:mm',
+              tooltipFormat: 'll HH:mm',
+              unit: 'minute',
+              stepSize: 1,
+              displayFormats: {
+                'minute': 'DD.MM HH:mm'
+              }
+            },
+            min: moment(moment().subtract(5, 'minutes')).valueOf(),
+            max: moment().valueOf()
+          },
+          y: {
+            beginAtZero: true
+          }
+        },
+      }
+    });
   }
 }

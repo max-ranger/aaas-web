@@ -9,6 +9,7 @@ import { MeasureMetricComponent } from './components/measure-metric/measure-metr
 import { DashboardOverviewComponent } from './components/dashboard/components/dashboard-overview/dashboard-overview.component';
 import { LogMessageComponent } from './components/log-message/log-message.component';
 import { DetectorsOverviewComponent } from './components/detectors/components/detectors-overview/detectors-overview.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'dashboard',

@@ -28,6 +28,9 @@ import { DashboardOverviewComponent } from './components/dashboard/components/da
 import { LogMessageComponent } from './components/log-message/log-message.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DetectorsOverviewComponent } from './components/detectors/components/detectors-overview/detectors-overview.component';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [
@@ -43,13 +46,17 @@ import { DetectorsOverviewComponent } from './components/detectors/components/de
     LogMessageComponent,
     FooterComponent,
     DetectorsComponent,
-    DetectorsOverviewComponent
+    DetectorsOverviewComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    OAuthModule.forRoot(),
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
