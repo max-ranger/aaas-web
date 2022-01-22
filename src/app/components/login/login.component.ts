@@ -9,6 +9,8 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 })
 export class LoginComponent implements OnInit {
 
+  hide = true;
+
   login: any = {
     username: '',
     password: ''

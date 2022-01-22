@@ -2,16 +2,19 @@
   <mat-card class="login-card">
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
-      <form #loginForm="ngForm" (ngSubmit)="submitForm()" _lpchecked="1">
+      <form #loginForm="ngForm" (ngSubmit)="submitForm()">
         <p>
           <mat-form-field color="accent">
-            <input matInput type="text" name="username" placeholder="username" [(ngModel)]="login.username">
+            <input matInput type="text" name="username" placeholder="username" [(ngModel)]="login.username" />
           </mat-form-field>
         </p>
 
         <p>
           <mat-form-field color="accent">
-            <input matInput type="text" name="password" placeholder="password" [(ngModel)]="login.password">
+            <input matInput [type]="hide ? 'password' : 'text'" name="password" placeholder="password" [(ngModel)]="login.password" />
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
           </mat-form-field>
         </p>
 
