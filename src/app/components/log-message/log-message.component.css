@@ -1,0 +1,37 @@
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.metric-table {
+  max-width: 100%;
+}
+
+table {
+  width: 100%;
+}
+/*
+td, th {
+  width: 20%;
+}
+
+.mat-column-timestamp {
+  text-align: left;
+}
+
+.mat-column-name {
+  text-align: left;
+}
+
+.mat-column-clientId {
+  text-align: left;
+}
+
+.mat-column-message {
+  text-align: left;
+}
+
+.mat-column-type {
+  text-align: left;
+}
+*/

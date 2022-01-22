@@ -30,17 +30,16 @@ table {
 td, th {
   width: 20%;
 }
-*/
+
+.mat-column-timestamp {
+  text-align: left;
+}
 
 .mat-column-name {
   text-align: left;
 }
 
 .mat-column-clientId {
-  text-align: left;
-}
-
-.mat-column-timestamp {
   text-align: left;
 }
 
@@ -51,3 +50,4 @@ td, th {
 .mat-column-unit {
   text-align: left;
 }
+*/

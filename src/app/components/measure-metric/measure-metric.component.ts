@@ -3,6 +3,9 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MeasureMetric } from 'src/app/shared/models/measure-metric';
+import { MetricService } from 'src/app/shared/services/metric.service';
+import * as moment from 'moment';
 import {
   Chart,
   ArcElement,
@@ -30,10 +33,6 @@ import {
   Tooltip
 } from 'chart.js';
 import 'chartjs-adapter-moment';
-import * as moment from 'moment';
-import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
-import { MeasureMetric } from 'src/app/shared/models/measure-metric';
-import { MetricService } from 'src/app/shared/services/metric.service';
 
 Chart.register(
   ArcElement,
@@ -82,8 +81,7 @@ export class MeasureMetricComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private metricService: MetricService, private _liveAnnouncer: LiveAnnouncer) {
-  }
+  constructor(private metricService: MetricService, private _liveAnnouncer: LiveAnnouncer) { }
 
   ngOnInit(): void {
     this.fetchData();

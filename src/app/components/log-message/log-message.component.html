@@ -1,3 +1,52 @@
 <div class="component-content">
-  <p>log-message works!</p>
+  
+  <h1>Log Messages</h1>
+
+  <div class="metric-table">
+
+    <mat-form-field appearance="standard" color="accent">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="metric" #input>
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+                
+        <ng-container matColumnDef="timeStamp">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> TimeStamp </th>
+          <td mat-cell *matCellDef="let row"> {{row.timeStamp | date: "dd.MM.YYYY HH:mm:ss"}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="clientId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ClientId </th>
+          <td mat-cell *matCellDef="let row"> {{row.clientId}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="message">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Message </th>
+          <td mat-cell *matCellDef="let row"> {{row.message}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+          <td mat-cell *matCellDef="let row"> {{row.type}} </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the search "{{input.value}}"</td>
+        </tr>
+        
+      </table>
+      
+      <mat-paginator [pageSizeOptions]="[15, 25, 50, 100]" aria-label="Select page of metrics"></mat-paginator>
+    </div>
+  </div>
 </div>
