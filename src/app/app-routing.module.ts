@@ -10,6 +10,8 @@ import { DashboardOverviewComponent } from './components/dashboard/components/da
 import { LogMessageComponent } from './components/log-message/log-message.component';
 import { DetectorsOverviewComponent } from './components/detectors/components/detectors-overview/detectors-overview.component';
 import { LoginComponent } from './components/login/login.component';
+import { IntervalDetectorComponent } from './components/interval-detector/interval-detector.component';
+import { MinManxDetectorComponent } from './components/min-manx-detector/min-manx-detector.component';
 
 const routes: Routes = [
   {
@@ -66,11 +68,11 @@ const routes: Routes = [
       },
       {
         path: 'interval-detectors',
-        component: DetectorsOverviewComponent
+        component: IntervalDetectorComponent
       },
       {
         path: 'min-max-detectors',
-        component: DetectorsOverviewComponent
+        component: MinManxDetectorComponent
       },
     ]
   }

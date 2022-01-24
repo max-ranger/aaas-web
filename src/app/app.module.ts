@@ -4,15 +4,20 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +36,8 @@ import { DetectorsOverviewComponent } from './components/detectors/components/de
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { IntervalDetectorComponent } from './components/interval-detector/interval-detector.component';
+import { MinManxDetectorComponent } from './components/min-manx-detector/min-manx-detector.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +54,9 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     FooterComponent,
     DetectorsComponent,
     DetectorsOverviewComponent,
-    LoginComponent
+    LoginComponent,
+    IntervalDetectorComponent,
+    MinManxDetectorComponent
   ],
   imports: [
     BrowserModule,
@@ -59,15 +68,21 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     OAuthModule.forRoot(),
     MatButtonModule,
     MatCardModule,
+    MatDatepickerModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
+    MatNativeDateModule,
     MatListModule,
     MatPaginatorModule,
+    MatSelectModule,
     MatSidenavModule,
     MatSortModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

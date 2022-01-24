@@ -1,0 +1,98 @@
+<div class="component-content">
+
+  <h1>Interval Detectors</h1>
+
+  <form class="detector-form" [formGroup]="form" (ngSubmit)="submitForm()">
+    <mat-form-field class="full-width-field" appearance="fill" color="accent">
+      <mat-label>Instance ID</mat-label>
+      <input matInput #instanceInput [(ngModel)]="detector.instanceId" formControlName="instanceId" type="text" maxlength="50" placeholder="Client_Instance_ID">
+      <mat-hint align="start">use a active client instance id</mat-hint>
+      <mat-hint align="end">{{instanceInput.value?.length || 0}}/50</mat-hint>
+    </mat-form-field>
+
+    <div class="detector-form-multi-line">
+      <mat-form-field class="wide-selector-field" appearance="fill" color="accent">
+        <mat-label>Aggregation Operation</mat-label>
+        <mat-select formControlName="aggregation" [(ngModel)]="detector.aggregation" [(value)]="selectedAggregationOperation">
+          <mat-option>---</mat-option>
+          <mat-option *ngFor="let aggregationOperation of aggregationOperations" [value]="aggregationOperation">{{aggregationOperation}}</mat-option>
+        </mat-select>
+        <mat-hint align="start">pick aggregation operation</mat-hint>
+      </mat-form-field>
+      
+      <mat-form-field class="wide-selector-field" appearance="fill" color="accent">
+        <mat-label>Comparison Operation</mat-label>
+        <mat-select formControlName="comparison" [(ngModel)]="detector.comparison" [(value)]="selectedComparisonOperation">
+          <mat-option>---</mat-option>
+          <mat-option *ngFor="let comparisonOperation of comparisonOperations" [value]="comparisonOperation">{{comparisonOperation}}</mat-option>
+        </mat-select>
+        <mat-hint align="start">pick comparison operation</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="full-width-field" appearance="fill" color="accent">
+      <mat-label>Threshold</mat-label>
+      <input matInput #thresholdInput [(ngModel)]="detector.threshold" formControlName="threshold" type="number" maxlength="4" placeholder="10">
+      <mat-hint align="start">as number</mat-hint>
+      <mat-hint align="end">{{thresholdInput.value?.length || 0}}/4</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="full-width-field" appearance="fill" color="accent">
+      <mat-label>Trigger Rate</mat-label>
+      <input matInput #triggerRateInput [(ngModel)]="detector.triggerRate" formControlName="triggerRate" type="number" maxlength="7" placeholder="5000">
+      <mat-hint align="start">in milliseconds</mat-hint>
+      <mat-hint align="end">{{triggerRateInput.value?.length || 0}}/7</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="full-width-field" appearance="fill" color="accent">
+      <mat-label>Runtime</mat-label>
+      <input matInput
+             placeholder="choose a date"
+             formControlName="runtime"
+             [(ngModel)]="detector.runtime"
+             [ngxMatDatetimePicker]="picker"
+             [min]="minDate"
+             [max]="maxDate">
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #picker
+        [showSpinners]="showSpinners"
+        [showSeconds]="showSeconds"
+        [stepHour]="stepHour"
+        [stepMinute]="stepMinute"
+        [stepSecond]="stepSecond"
+        color="accent">
+      </ngx-mat-datetime-picker>
+      <mat-hint align="start">detector end time</mat-hint>
+    </mat-form-field>
+
+    <div class="detector-form-multi-line">
+      <mat-form-field class="selector-field" appearance="fill" color="accent">
+        <mat-label>Response Type</mat-label>
+        <mat-select formControlName="responseType" [(ngModel)]="selectedResponseType" [(value)]="selectedResponseType">
+          <mat-option>---</mat-option>
+          <mat-option *ngFor="let responseType of responseTypes" [value]="responseType">{{responseType}}</mat-option>
+        </mat-select>
+        <mat-hint>select response type</mat-hint>
+      </mat-form-field>
+  
+      <mat-form-field class="hideable-field" appearance="fill" color="accent" *ngIf="selectedResponseType == 'Webhook'">
+        <mat-label>Webhook</mat-label>
+        <input matInput #addressInput [(ngModel)]="detector.actionAddress" formControlName="webhook" type="text" maxlength="100" placeholder="http://localhost:8000/api/Detector/WebHook/Test">
+        <mat-hint align="start">webhook address</mat-hint>
+        <mat-hint align="end">{{addressInput.value?.length || 0}}/100</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="hideable-field" appearance="fill" color="accent" *ngIf="selectedResponseType == 'EMail'">
+        <mat-label>EMail</mat-label>
+        <input matInput #addressInput [(ngModel)]="detector.actionAddress" formControlName="email" type="email" maxlength="100" placeholder="jane.doe@mail.com">
+        <mat-hint align="start">email address</mat-hint>
+        <mat-hint align="end">{{addressInput.value?.length || 0}}/100</mat-hint>
+        <mat-error *ngIf="form.controls['email'].hasError('email') && !form.controls['email'].hasError('required')">
+          please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <button mat-flat-button type="submit" color="accent">Create Detector</button>
+  </form>
+</div>
