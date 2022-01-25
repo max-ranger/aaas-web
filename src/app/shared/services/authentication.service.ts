@@ -8,12 +8,19 @@ export class AuthenticationService {
 
   constructor(private oauthService: OAuthService) { }
 
-  login(username: string, password: string): boolean {
+  login(): boolean {
     this.oauthService.initCodeFlow();
+    return true;
+  }
+  
+  logout(): boolean {
+    this.oauthService.logOut();
     return true;
   }
 
   isLoggedIn() {
-    return this.oauthService.hasValidAccessToken() && this.oauthService.hasValidIdToken();
+    return this.oauthService.hasValidAccessToken() &&
+           this.oauthService.hasValidIdToken();
   }
+
 }

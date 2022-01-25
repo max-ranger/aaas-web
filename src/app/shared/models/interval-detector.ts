@@ -7,5 +7,5 @@ export class IntervalDetector {
     public triggerRate?: number,
     public runtime?: Date,
     public actionAddress?: string
-) { }
+  ) { }
 }

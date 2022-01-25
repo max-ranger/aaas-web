@@ -33,7 +33,6 @@ import { DashboardOverviewComponent } from './components/dashboard/components/da
 import { LogMessageComponent } from './components/log-message/log-message.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DetectorsOverviewComponent } from './components/detectors/components/detectors-overview/detectors-overview.component';
-import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { IntervalDetectorComponent } from './components/interval-detector/interval-detector.component';
@@ -54,7 +53,6 @@ import { MinManxDetectorComponent } from './components/min-manx-detector/min-man
     FooterComponent,
     DetectorsComponent,
     DetectorsOverviewComponent,
-    LoginComponent,
     IntervalDetectorComponent,
     MinManxDetectorComponent
   ],

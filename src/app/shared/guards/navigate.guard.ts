@@ -6,7 +6,7 @@ import { AuthenticationService } from '../services/authentication.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CanNavigateToAdminGuard implements CanActivate {
+export class NavigateGuard implements CanActivate {
 
   constructor(protected router: Router, protected auth: AuthenticationService) { }
 
@@ -14,11 +14,12 @@ export class CanNavigateToAdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (!this.auth.isLoggedIn) {
-      this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+    if (!this.auth.isLoggedIn()) {
+      this.router.navigate(['/home'], { queryParams: { returnUrl: state.url } });
       return false;
     } else {
       return true;
     }
   }
+
 }

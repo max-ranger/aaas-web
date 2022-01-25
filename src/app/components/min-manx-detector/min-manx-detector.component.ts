@@ -38,8 +38,7 @@ export class MinManxDetectorComponent implements OnInit {
     ResponseType.Webhook
   ];
   
-  constructor(private detectorsService: DetectorService, private formBuilder: FormBuilder) {
-  }
+  constructor( private detectorsService: DetectorService, private formBuilder: FormBuilder) { }
   
   ngOnInit(): void {
     this.date = moment().toDate();

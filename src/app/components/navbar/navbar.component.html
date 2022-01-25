@@ -3,5 +3,5 @@
   <button mat-flat-button color="primary" [routerLink]="'dashboard'" routerLinkActive="active-button">Dashboard</button>
   <button mat-flat-button color="primary" [routerLink]="'detectors'" routerLinkActive="active-button">Detectors</button>
   <span class="spacer"></span>
-  <button mat-flat-button color="primary" [routerLink]="'home'">Logout</button>
+  <button *ngIf="isLoggedIn()" mat-flat-button color="primary" [routerLink]="'home'" (click)="logout()">Logout</button>
 </mat-toolbar>

@@ -2,12 +2,11 @@
   <div class="component-content">
     <mat-card class="home-card">
       <mat-card-title>Welcome</mat-card-title>
-      <mat-card-subtitle>to the AaaS.Web frontend</mat-card-subtitle>
       <mat-card-content>
-        <p>Please login to continue.</p>
+        <p>to the AaaS.Web frontend</p>
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-flat-button color="accent" [routerLink]="'../login'">Login</button>
+        <button *ngIf="!isLoggedIn()" mat-flat-button color="accent" (click)="login()">Login</button>
       </mat-card-actions>
     </mat-card>
   </div>

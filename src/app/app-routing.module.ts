@@ -9,9 +9,9 @@ import { MeasureMetricComponent } from './components/measure-metric/measure-metr
 import { DashboardOverviewComponent } from './components/dashboard/components/dashboard-overview/dashboard-overview.component';
 import { LogMessageComponent } from './components/log-message/log-message.component';
 import { DetectorsOverviewComponent } from './components/detectors/components/detectors-overview/detectors-overview.component';
-import { LoginComponent } from './components/login/login.component';
 import { IntervalDetectorComponent } from './components/interval-detector/interval-detector.component';
 import { MinManxDetectorComponent } from './components/min-manx-detector/min-manx-detector.component';
+import { NavigateGuard } from './shared/guards/navigate.guard';
 
 const routes: Routes = [
   {
@@ -29,10 +29,6 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
     path: 'dashboard',
     component: DashboardComponent,
     children: [
@@ -42,19 +38,23 @@ const routes: Routes = [
       },
       {
         path: 'log-messages',
-        component: LogMessageComponent
+        component: LogMessageComponent,
+        //canActivate: [NavigateGuard]
       },
       {
         path: 'counter-metrics',
-        component: CounterMetricComponent
+        component: CounterMetricComponent,
+        //canActivate: [NavigateGuard]
       },
       {
         path: 'interval-metrics',
-        component: IntervalMetricComponent
+        component: IntervalMetricComponent,
+        //canActivate: [NavigateGuard]
       },
       {
         path: 'measure-metrics',
-        component: MeasureMetricComponent
+        component: MeasureMetricComponent,
+        //canActivate: [NavigateGuard]
       },
     ]
   },
@@ -68,11 +68,13 @@ const routes: Routes = [
       },
       {
         path: 'interval-detectors',
-        component: IntervalDetectorComponent
+        component: IntervalDetectorComponent,
+        //canActivate: [NavigateGuard]
       },
       {
         path: 'min-max-detectors',
-        component: MinManxDetectorComponent
+        component: MinManxDetectorComponent,
+        //canActivate: [NavigateGuard]
       },
     ]
   }
