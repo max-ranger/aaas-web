@@ -39,22 +39,22 @@ const routes: Routes = [
       {
         path: 'log-messages',
         component: LogMessageComponent,
-        //canActivate: [NavigateGuard]
+        canActivate: [NavigateGuard]
       },
       {
         path: 'counter-metrics',
         component: CounterMetricComponent,
-        //canActivate: [NavigateGuard]
+        canActivate: [NavigateGuard]
       },
       {
         path: 'interval-metrics',
         component: IntervalMetricComponent,
-        //canActivate: [NavigateGuard]
+        canActivate: [NavigateGuard]
       },
       {
         path: 'measure-metrics',
         component: MeasureMetricComponent,
-        //canActivate: [NavigateGuard]
+        canActivate: [NavigateGuard]
       },
     ]
   },
@@ -69,12 +69,12 @@ const routes: Routes = [
       {
         path: 'interval-detectors',
         component: IntervalDetectorComponent,
-        //canActivate: [NavigateGuard]
+        canActivate: [NavigateGuard]
       },
       {
         path: 'min-max-detectors',
         component: MinManxDetectorComponent,
-        //canActivate: [NavigateGuard]
+        canActivate: [NavigateGuard]
       },
     ]
   }

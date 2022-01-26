@@ -7,7 +7,7 @@ import { AuthConfig } from 'angular-oauth2-oidc';
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/auth/realms/aaas-identity-server',
   loginUrl: 'http://localhost:8080/auth/realms/aaas-identity-server/protocol/openid-connect/auth',
-  logoutUrl: 'http://localhost:8080/auth/realms/aaas-identity-server/protocol/openid-connect/logout',
+  logoutUrl: 'http://localhost:8080/realms/aaas-identity-server/protocol/openid-connect/logout',
   tokenEndpoint: 'http://localhost:8080/auth/realms/aaas-identity-server/protocol/openid-connect/token',
   sessionCheckIFrameUrl: 'http://localhost:8080/auth/realms/aaas-identity-server/protocol/openid-connect/login-status-iframe.html',
   userinfoEndpoint: 'http://localhost:8080/auth/realms/aaas-identity-server/protocol/openid-connect/userinfo',
