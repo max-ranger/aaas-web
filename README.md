@@ -1,5 +1,15 @@
 # AaasWeb
 
+## Installation
+
+Clone project from this repository.
+Open a Terminal or Bash and navigate to the root folder of the project.
+
+Run
+```
+npm install
+```
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
 
 ## Development server
