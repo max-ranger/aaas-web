@@ -26,6 +26,7 @@ http://localhost:4200/
 
 The app will automatically reload if you change any of the source files.
 
+
 ## Code scaffolding
 
 Generate new component:
@@ -47,6 +48,7 @@ ng build
 ```
 The build artifacts will be stored in the `dist/` directory.
 
+
 ## Running unit tests
 
 Execute the unit tests via [Karma](https://karma-runner.github.io):
@@ -62,6 +64,7 @@ Execute the end-to-end tests via a platform of your choice:
 ng e2e
 ```
 To use this command, you need to first add a package that implements end-to-end testing capabilities.
+
 
 ## Further help
 
